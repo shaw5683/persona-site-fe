@@ -21,7 +21,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    vendor: ['axios', 'element-ui'],
+    vendor: ['@nuxtjs/axios', 'element-ui'],
     /*
     ** Run ESLint on save
     */
@@ -45,5 +45,22 @@ module.exports = {
     'element-ui/lib/theme-chalk/index.css',
     'reset-css/reset.css',
     '@assets/style/common.css'
-  ]
+  ],
+  modules: [
+    '@nuxtjs/axios'
+  ],
+  axios: {
+    proxy: true,
+    retry: {
+      retries: 3
+    }
+  },
+  proxy: {
+    '/api': {
+      target: 'http://localhost:3001',
+      pathRewrite: {
+        '^/api': '/'
+      }
+    }
+  }
 };

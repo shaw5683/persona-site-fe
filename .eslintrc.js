@@ -18,5 +18,8 @@ module.exports = {
     'vue'
   ],
   // add your custom rules here
-  rules: {}
+  rules: {
+    'no-console': 0,
+    'no-debugger': 0
+  }
 };
