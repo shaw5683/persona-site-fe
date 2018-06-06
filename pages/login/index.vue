@@ -14,6 +14,8 @@
 </template>
 
 <script>
+  import axios from '~/plugins/axios';
+
 	export default {
 		name: "index",
     layout: 'login',
@@ -45,7 +47,13 @@
       submitForm (formName) {
         this.$refs[formName].validate(valid => {
           if (valid) {
-            alert('submit');
+            axios.post('/login', this.form).then(res => {
+              if (res.data.success) {
+                console.log('登录成功');
+              } else {
+                console.log(res.data.msg);
+              }
+            })
           } else {
             return;
           }
